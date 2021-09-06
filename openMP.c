@@ -21,23 +21,25 @@ int eratostenesOpenMP(int lastNumber){
 
     #pragma omp for
       for (int i = 2; i*i <= lastNumber; i++){
-        if (isPrime[i]);
+        if (isPrime[i]){
           for (int j = i*i; j <= lastNumber; j += i){
             isPrime[j] = 0;
-          }
-        printf("Thread %d executa interação %d do for \n", omp_get_thread_num(),i);
+          }          
+        }
+
+      printf("Thread %d executa interação %d do for \n", omp_get_thread_num(),i);
       }
   }
   
   int contador = 0;
-  for (int i = 2; i <= lastNumber; i++)
-    contador += isPrime[i];
 
-    free(isPrime);
+  for (int i = 2; i <= lastNumber; i++){
+    if(isPrime[i]){
+        contador = contador + 1;
+    }
+  }
 
-    return 0;
-
-
+  free(isPrime);
   return contador;
 
 }
