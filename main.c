@@ -24,14 +24,15 @@ int main(){
     double inicio;
     double fim;
     double t_serial;
-    int escolha
+    int escolha;
 
     
-    printf("Selecione: \n 
-                1 -> Serial \n
-                2 -> Paralelização com openMP \n
-                2 -> Paralelização com MPI \n");
-        scanf("%d", &escolha);
+    printf("Selecione: \n");
+    printf("1 -> Serial \n");
+    printf("2 -> Paralelização com openMP \n");
+    printf("2 -> Paralelização com MPI \n");
+    printf("Selecione:");
+    scanf("%d", &escolha);
 
     if(escolha == 1){
         printf("Solução Serial! \n");
@@ -43,7 +44,7 @@ int main(){
 
         inicio = clock(); //armazena tempo
         result = eratostenes(ultimoNumero);
-        fim = clock() - t; //tempo final - tempo inicial
+        fim = clock(); //tempo final - tempo inicial
 
         t_serial = fim - inicio; 
         
@@ -63,11 +64,11 @@ int main(){
 
         inicio = clock(); //armazena tempo
         result = eratostenesOpenMP(ultimoNumero);
-        fim = clock() - t; //tempo final - tempo inicial
+        fim = clock() - inicio; //tempo final - tempo inicial
       
         printf("%d \n", result);
        
-        tempo(t_serial, inicio, fim)
+        tempo(t_serial, inicio, fim);
     }
 
     if(escolha == 3){
@@ -78,12 +79,12 @@ int main(){
 
         inicio = clock(); //armazena tempo
         result = eratostenesMPI();
-        fim = clock() - t; //tempo final - tempo inicial
+        fim = clock() - inicio; //tempo final - tempo inicial
       
         printf("%d \n", result);
 
         printf("Analise do Tempo: \n");
-        tempo(t_serial, inicio, fim)
+        tempo(t_serial, inicio, fim);
        
     }
     return ("\n FIM!");
